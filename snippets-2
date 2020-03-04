@@ -1,0 +1,50 @@
+//gs.log("hello-world");
+//gs.info("hello-world");
+//gs.print("hello-world");
+
+var gr = new GlideRecord('sys_dictionary');
+gr.addQuery('name','sys_user_group');
+gr.addEncodedQuery('internal_type!=collection^ORinternal_type=NULL')
+gr.query();
+
+grFields=[];
+while(gr.next()){
+//gs.print(gr.name);
+grFields.push(gr.column_label.toString()+"["+gr.element.toString() + "]");
+}
+gs.print(grFields);
+for(var i in grFields)
+{
+   gs.print(grFields[i]);
+}
+grRole=[];
+
+var gr = new GlideRecord('sys_user_group');
+gr.addQuery('active','true');
+gr.query();
+while(gr.next()){
+  if(gr.getValue('roles')==null || gr.getValue('roles')==""){
+  }
+  else{
+    gs.info(gr.getValue('roles')
+  }
+}
+// gs.print(grFields);
+// for(var i in grFields)
+// {
+//    gs.print(grFields[i]);
+// }
+
+
+var pseudoCode = "Create the notes property on the data object which will"
+
+var notes = [];
+
+var noteObj  = {number:41225356, title: 'Note1', sys_id:'4c76e081db4440104512656b4b96198f'};
+
+noteObj.note = pseudoCode.slice(0,20);
+// console.log(noteObj);
+// console.log(noteObj.note);
+
+notes.push(noteObj);
+console.log(notes);
